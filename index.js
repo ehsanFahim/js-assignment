@@ -96,22 +96,28 @@ function password(obj) {
 
 function calculateTotalSavings(payments, livingCost) {
   if (!Array.isArray(payments) || typeof livingCost !== "number") {
-    return "invalid input";
-  }
-  let sum = 0;
-  for (let i = 0; i < payments.length; i++) {
-    sum += payments[i];
+      return "invalid input";
   }
 
-  const savings = sum - livingCost;
-  if (savings <= 0) {
-    return "earn more";
+  let totalEarnings = 0;
+  for (let i = 0; i < payments.length; i++) {
+     
+      if (payments[i] >= 3000) {
+          totalEarnings += (payments[i] - (payments[i] * 0.20)); 
+      } else {
+          totalEarnings += payments[i];
+      }
+  }
+
+  const savings = totalEarnings - livingCost;
+  if (savings < 0) {
+      return "earn more";
   } else {
-    return savings;
+      return savings;
   }
 }
 
 console.log(calculateTotalSavings([1000, 2000, 3000], 5400)); // Output: 0
 console.log(calculateTotalSavings([1000, 2000, 2500], 5000)); // Output: 500
 console.log(calculateTotalSavings([900, 2700, 3400], 10000)); // Output: "earn more"
-console.log(calculateTotalSavings("100", [900, 2700, 3400])); // Output: invalid input
+console.log(calculateTotalSavings(100, [900, 2700, 2900])); // Output: invalid input
