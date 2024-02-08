@@ -114,4 +114,4 @@ function calculateTotalSavings(payments, livingCost) {
 console.log(calculateTotalSavings([1000, 2000, 3000], 5400)); // Output: 0
 console.log(calculateTotalSavings([1000, 2000, 2500], 5000)); // Output: 500
 console.log(calculateTotalSavings([900, 2700, 3400], 10000)); // Output: "earn more"
-console.log(calculateTotalSavings(100, [900, 2700, 3400])); // Output: invalid input
+console.log(calculateTotalSavings("100", [900, 2700, 3400])); // Output: invalid input
